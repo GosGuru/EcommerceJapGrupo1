@@ -40,16 +40,19 @@
         <div class="container__form-form">
           <label for="contacto" id="contactoLabel">Email o Télefono</label>
           <input type="text" class="container__form__input" name="contacto" id="contacto">
-          <p id="error">Campo vacío</p>
-        </div>
+          <p id="emailError" class="error-message">Campo vacío</p>
 
-        <button type="submit" class="container__form__ingresar">Ingresar</button>
+          <label for="password" id="passwordLabel">Contraseña</label>
+          <input type="password" class="container__form__input" name="password" id="password">
+          <p id="passwordError" class="error-message">Campo vacío</p>
 
-        <div class="separator">
-          <div class="separator__line"></div>
-          <div class="separator__text">o</div>
-          <div class="separator__line"></div>
-        </div>
+          <button type="submit" class="container__form__ingresar">Ingresar</button>
+
+          <div class="separator">
+            <div class="separator__line"></div>
+            <div class="separator__text">o</div>
+            <div class="separator__line"></div>
+          </div>
 
         <button type="button" class="container__form__crearcuenta">Crear cuenta</button>
 

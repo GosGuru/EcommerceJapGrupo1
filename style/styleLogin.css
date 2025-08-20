@@ -295,6 +295,23 @@ div {
     text-decoration: underline;
 }
 
+.error-message {
+    color: #ff4757;
+    font-size: 14px;
+    font-family: "Lexend Deca", sans-serif;
+    margin: -20px 0 16px 0;
+    display: none;
+}
+
+.error-input {
+    border: 1px solid #ff4757 !important;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1) !important;
+}
+
+.error-label {
+    color: #ff4757 !important;
+}
+
 /* Responsividad -- MOVIL */
 
 @media (max-width: 768px) {
