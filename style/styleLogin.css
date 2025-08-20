@@ -30,9 +30,11 @@ div {
 .container__background {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     background-image: url("../img/Fondo.png");
     background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     position: relative;
     border-radius: 0;
 }
@@ -102,6 +104,24 @@ div {
     text-align: center;
     color: #ffffff;
     margin: 0 0 1rem 0;
+}
+
+.container__form__ingresar,
+.container__form__crearcuenta,
+.container__form__google,
+.separator,
+.forgot-password {
+    width: 100%;
+    max-width: 679px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#error {
+    color: #df2424;
+    display: none;
+    font-family: "Lexend Deca";
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .container__form__subtitle {
@@ -341,4 +361,17 @@ div {
     .container__form__subtitle {
         font-size: 20px;
     }
+}
+/* Cuando hay error */
+.error-input {
+    border: 1px solid #df2424 !important;
+}
+
+.error-label {
+    color: #df2424 !important;
+}
+
+#error {
+    font-size: 0.9rem;
+    margin-top: 4px;
 }
