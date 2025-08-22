@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>eMercado - Lista de Autos</title>
+
+  <!-- Fuentes como en Figma -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;500;700&family=Albert+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- Bootstrap solo CSS (para reset y utilidades básicas) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/styleCategories.css">
+</head>
+<body>
+  <!-- Nav ligero, como el tuyo pero sin clases extra -->
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">eMercado</a>
+      <div class="d-flex gap-3">
+        <a class="nav-link text-white-50" href="categories.html">Categorías</a>
+        <a class="nav-link text-white-50" href="sell.html">Vender</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-2">
+    <!-- Hero + título como en Figma -->
+    <div class="hero">
+      <img src="https://media.istockphoto.com/id/1389974541/photo/cable-stayed-bridge-in-s%C3%A3o-paulo.jpg?s=2048x2048&w=is&k=20&c=tjk1PprOeT4YaaV9qWYlut8oBCnw13VjRSZK3x_b3Dg=" alt="imageTOP" loading="lazy">
+    </div>
+    <h1 class="page-title">LISTA DE AUTOS</h1>
+
+    <!-- Aquí inyectamos las tarjetas -->
+    <section id="products"></section>
+  </main>
+
+  <footer  class="footer">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="#">Volver arriba</a>
+      <p class="mb-0">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" rel="noopener">Jóvenes a Programar</a></p>
+    </div>
+  </footer class="footer">
+
+  <!-- Bootstrap JS desde CDN (evita el error de MIME) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script: trae la API y arma las tarjetas al estilo Figma (sin async/await) -->
+  <script src="js/products.js"></script>
+</body>
+</html>
