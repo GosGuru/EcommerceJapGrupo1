@@ -1,47 +1,75 @@
-const form = document.getElementById("loginForm");
-const emailInput = document.getElementById("contacto");
-const passwordInput = document.getElementById("password");
-const emailLabel = document.getElementById("contactoLabel");
-const passwordLabel = document.getElementById("passwordLabel");
-const emailError = document.getElementById("emailError");
-const passwordError = document.getElementById("passwordError");
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById("loginForm");
+    const emailInput = document.getElementById("contacto");
+    const passwordInput = document.getElementById("password");
+    const emailLabel = document.getElementById("contactoLabel");
+    const passwordLabel = document.getElementById("passwordLabel");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
 
-form.addEventListener("submit", (e) => {
-  // Prevenir el comportamiento por defecto del formulario
-  e.preventDefault();
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        // Limpiar errores previos
+        clearErrors();
+        
+        // Validar campos
+        const isValid = validateForm();
+        
+        if (isValid) {
+            saveUserSession();
+            redirectToHome();
+        }
+    });
 
-  // Limpiar mensajes de error
-  emailInput.classList.remove("error-input");
-  passwordInput.classList.remove("error-input");
-  emailLabel.classList.remove("error-label");
-  passwordLabel.classList.remove("error-label");
-  emailError.style.display = "none";
-  passwordError.style.display = "none";
+    function clearErrors() {
+        const errorElements = [emailInput, passwordInput];
+        const labelElements = [emailLabel, passwordLabel];
+        const messageElements = [emailError, passwordError];
+        
+        errorElements.forEach(element => element.classList.remove("error-input"));
+        labelElements.forEach(element => element.classList.remove("error-label"));
+        messageElements.forEach(element => element.style.display = "none");
+    }
 
-  // Variable para controlar errores
-  let esError = false;
+    function validateForm() {
+        let isValid = true;
+        
+        // Validar email
+        if (!emailInput.value.trim()) {
+            showError(emailInput, emailLabel, emailError, "Campo vacío");
+            isValid = false;
+        }
+        
+        // Validar contraseña
+        if (!passwordInput.value.trim()) {
+            showError(passwordInput, passwordLabel, passwordError, "Campo vacío");
+            isValid = false;
+        }
+        
+        return isValid;
+    }
 
-  // Validar email
-  if (emailInput.value.trim() === "") {
-    emailInput.classList.add("error-input");
-    emailLabel.classList.add("error-label");
-    emailError.textContent = "Campo vacío";
-    emailError.style.display = "block";
-    esError = true;
-  }
+    function showError(input, label, errorElement, message) {
+        input.classList.add("error-input");
+        label.classList.add("error-label");
+        errorElement.textContent = message;
+        errorElement.style.display = "block";
+    }
 
-  // Validar contraseña
-  if (passwordInput.value.trim() === "") {
-    passwordInput.classList.add("error-input");
-    passwordLabel.classList.add("error-label");
-    passwordError.textContent = "Campo vacío";
-    passwordError.style.display = "block";
-    hasError = true;
-  }
+    function saveUserSession() {
+        const userData = {
+            email: emailInput.value.trim(),
+            loginTime: new Date().toISOString(),
+            isLoggedIn: true
+        };
+        
+        localStorage.setItem("Datos de usuario", JSON.stringify(userData));
+        localStorage.setItem("isLoggedIn", "true");
+    }
 
-  // Si hay errores, no enviar el formulario --> para que no lo envíe si está vacio... Da positivo si los dos campos están con informacion
-  if (esError) return;
-
-  alert("Bienvenid@, Redirigiendo...");
-  window.location.href = "index.html";
+    function redirectToHome() {
+        alert("Bienvenid@, Redirigiendo...");
+        window.location.href = "index.html";
+    }
 });
